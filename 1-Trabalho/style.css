@@ -1,0 +1,30 @@
+#body-principal {
+    background-color: rgb(186, 247, 247)!important;
+}
+
+#body-edit {
+    background-color: rgb(186, 247, 196)!important;
+}
+
+h1 {
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.form-inicial {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.tudo {
+    margin: 10%;
+    padding: 5%;
+}
+
+.botao-tab {
+    justify-content: center;
+}
+
