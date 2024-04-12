@@ -1,80 +1,83 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/0e0ac8af13.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>Formulário de Login</title>
+    </head>
 
-<body>
-   
+    <body>
 
-
-<?php
-    if(!empty($_GET['msg'])){
-         
-        if ($_GET['msg'] == "OK"){
-    ?>
-            <div class="alert alert-info" role="alert">
-                <?php echo "<strong> Registrado com sucesso!</strong>"; ?>
-            </div>
     <?php
-
-        }
-        
-        else if($_GET['msg'] == "LOGIN_ERROR"){
-
-            ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo "<strong>Nome, e-mail ou senha incorreto.</strong>"; ?>
-            </div>
-    <?php
-
-        }
-        
-        else
-        
-        {
-    ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo "<strong> Não é possível se conectar no banco de dados. <strong><br>";?>
-            </div>
-    <?php
-        }
-        unset($_GET['msg']);
-    }
-
-    
+        if(!empty($_GET['msg'])) {
+            if ($_GET['msg'] == "OK") {
     ?>
 
+                <div class="msg-alertas">
 
+                    <span class="ms ok"><i class="fa-solid fa-check"></i> Cadastro realizado com sucesso!</span>
 
-
-    <div id="login">
-        <h3 class="text-center text-white pt-5">Login form</h3>
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form id="login-form" class="form" action="verify_login.php" method="post">
-                            <h3 class="text-center text-info">Login</h3>
-                            <div class="form-group">
-                                <label for="nome-email" class="text-info">Nome ou E-mail:</label><br>
-                                <input type="text" name="nome-email" id="nome-email" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="senha" class="text-info">Senha:</label><br>
-                                <input type="password" name="senha" id="senha" class="form-control">
-                            </div>
-                            <div id="register-link" class="text-right">
-                                <a href="register.html" class="text-info">Register here</a>
-                            </div>
-                            <div class="form-group">
-  
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-                            </div>
-                            
-                        </form>
-                    </div>
                 </div>
-            </div>
+
+    <?php
+            } else if($_GET['msg'] == "LOGIN_ERROR") {
+    ?>
+
+                <div class="msg-alertas">
+
+                    <span class="ms erro"><i class="fa-solid fa-xmark"></i> Nome, e-mail ou senha incorreto!</span>
+
+                </div>
+
+    <?php
+            } else if($_GET['msg'] == "LOGIN_NULL"){
+    ?>
+
+                <div class="msg-alertas">
+
+                    <span class="ms alerta"><i class="fa-solid fa-triangle-exclamation"></i> Preencha todos os campos!</span>
+
+                </div>
+
+    <?php
+            } else {
+    ?>
+
+                <div class="msg-alertas">
+
+                    <span class="ms info"><i class="fa-solid fa-circle-info"></i> Não foi possível se conectar no banco.</span>
+
+                </div>
+
+    <?php
+            }
+            unset($_GET['msg']);
+        }  
+    ?>
+
+        <div class="conteudo">
+            <h1>Entre na sua conta!</h3>
+
+            <form action="verify_login.php" method="post">
+                <div class="form">
+
+                    <div class="div-input">
+                        <label for="nome-email">Usuário:</label>
+                        <input class="input" type="text" name="nome-email" id="nome-email" placeholder="Seu nome ou e-mail">
+                    </div>
+
+                    <div class="div-input">
+                        <label for="senha">Senha:</label>
+                        <input class="input" type="password" name="senha" id="senha" placeholder="Digite sua senha">
+                    </div>
+
+                    <input class="botao" type="submit" name="submit" value="Entrar">
+
+                    <a href="cadastrar.php">Não possui ainda uma conta? Cadastre-se já!</a>
+                </div>                
+            </form>
         </div>
-    </div>
-</body>
+    </body>
+</html>
